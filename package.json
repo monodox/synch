@@ -31,12 +31,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/synch.git"
+    "url": "https://github.com/monodox/synch.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/synch/issues"
+    "url": "https://github.com/monodox/synch/issues"
   },
-  "homepage": "https://github.com/yourusername/synch#readme",
+  "homepage": "https://github.com/monodox/synch#readme",
   "engines": {
     "node": ">=16.0.0"
   },
