@@ -13,6 +13,6 @@
     "declarationMap": true,
     "sourceMap": true
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["src/**/*", "test/createSynch.test.ts", "test/runner.test.ts", "test/router.test.ts", "test/state.test.ts", "test/cache.test.ts"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts"]
 }

@@ -4,10 +4,15 @@
   "description": "Open-source Node.js runtime for executing AI tasks efficiently through computation reuse, state management, and intelligent caching",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "bin": {
+    "synch": "dist/bin.js"
+  },
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest --run",
+    "start": "node dist/bin.js serve",
+    "cli": "node dist/bin.js",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
@@ -36,6 +41,8 @@
     "node": ">=16.0.0"
   },
   "devDependencies": {
-    "typescript": "^5.0.0"
+    "@types/node": "^25.5.0",
+    "typescript": "^5.0.0",
+    "vitest": "^4.1.2"
   }
 }
