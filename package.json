@@ -1,0 +1,41 @@
+{
+  "name": "synch",
+  "version": "1.0.0",
+  "description": "Open-source Node.js runtime for executing AI tasks efficiently through computation reuse, state management, and intelligent caching",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "ai",
+    "runtime",
+    "cache",
+    "state-management",
+    "computation-reuse",
+    "llm",
+    "inference",
+    "optimization",
+    "node",
+    "typescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/synch.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/synch/issues"
+  },
+  "homepage": "https://github.com/yourusername/synch#readme",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

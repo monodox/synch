@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Synch - Open-source Node.js runtime for executing AI tasks efficiently through computation reuse, state management, and intelligent caching">
+    <meta name="keywords" content="AI, runtime, cache, state management, computation reuse, LLM, inference, optimization, nodejs">
+    <title>Synch - AI Task Execution Runtime</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        .content {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin: 40px 0 20px 0;
+            color: #667eea;
+        }
+
+        h2:first-child {
+            margin-top: 0;
+        }
+
+        .execution-flow {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+        }
+
+        .flow-traditional {
+            color: #dc3545;
+            margin-bottom: 20px;
+        }
+
+        .flow-synch {
+            color: #28a745;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .feature {
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .feature h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+        }
+
+        .code-block .keyword {
+            color: #569cd6;
+        }
+
+        .code-block .string {
+            color: #ce9178;
+        }
+
+        .code-block .function {
+            color: #dcdcaa;
+        }
+
+        .code-block .comment {
+            color: #6a9955;
+        }
+
+        .benefits {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .benefits li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .benefits li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Synch</h1>
+            <p class="tagline">Open-source Node.js runtime for executing AI tasks efficiently</p>
+            <p>Computation reuse • State management • Intelligent caching</p>
+            
+            <div class="cta-buttons">
+                <a href="https://github.com/yourusername/synch" class="btn btn-primary">View on GitHub</a>
+                <a href="#installation" class="btn btn-secondary">Get Started</a>
+            </div>
+        </header>
+
+        <div class="content">
+            <h2>Why Synch?</h2>
+            <p>Modern AI systems repeatedly recompute the same results, leading to unnecessary consumption of compute, memory, and cost. Synch introduces a structured execution pipeline that minimizes redundant work.</p>
+
+            <div class="execution-flow">
+                <div class="flow-traditional">
+                    <strong>Traditional:</strong><br>
+                    input → compute → output
+                </div>
+                <div class="flow-synch">
+                    <strong>Synch:</strong><br>
+                    input → check state/cache → reuse if available → compute if needed → store → output
+                </div>
+            </div>
+
+            <h2>Key Features</h2>
+            <div class="features">
+                <div class="feature">
+                    <h3>⚡ Computation Reuse</h3>
+                    <p>Cache and reuse results to avoid redundant processing, reducing execution time and resource usage.</p>
+                </div>
+                <div class="feature">
+                    <h3>🧠 State Management</h3>
+                    <p>Maintain execution state across requests for session tracking and context persistence.</p>
+                </div>
+                <div class="feature">
+                    <h3>🎯 Intelligent Routing</h3>
+                    <p>Smart request handling and optimization with automatic ID generation and metadata tracking.</p>
+                </div>
+                <div class="feature">
+                    <h3>🪶 Lightweight</h3>
+                    <p>Minimal overhead with zero external dependencies in the core implementation.</p>
+                </div>
+                <div class="feature">
+                    <h3>🔧 Modular</h3>
+                    <p>Clean architecture with runtime, cache, router, and memory modules that can be extended.</p>
+                </div>
+                <div class="feature">
+                    <h3>📦 TypeScript Native</h3>
+                    <p>Built with TypeScript for excellent type safety and developer experience.</p>
+                </div>
+            </div>
+
+            <h2 id="installation">Installation</h2>
+            <div class="code-block">
+<span class="comment"># Install via npm</span>
+npm install synch
+
+<span class="comment"># Install via yarn</span>
+yarn add synch
+            </div>
+
+            <h2>Quick Start</h2>
+            <div class="code-block">
+<span class="keyword">import</span> { <span class="function">createSynch</span> } <span class="keyword">from</span> <span class="string">'synch'</span>;
+
+<span class="comment">// Create Synch instance</span>
+<span class="keyword">const</span> synch = <span class="function">createSynch</span>({
+  cache: {
+    enabled: <span class="keyword">true</span>,
+    maxSize: <span class="string">1000</span>,
+    ttl: <span class="string">3600000</span> <span class="comment">// 1 hour</span>
+  }
+});
+
+<span class="comment">// Define your AI task</span>
+<span class="keyword">const</span> <span class="function">processText</span> = <span class="keyword">async</span> (text) => {
+  <span class="comment">// Your AI processing logic</span>
+  <span class="keyword">return</span> <span class="keyword">await</span> <span class="function">model.generate</span>(text);
+};
+
+<span class="comment">// Execute with computation reuse</span>
+<span class="keyword">const</span> result = <span class="keyword">await</span> synch.<span class="function">run</span>(
+  { input: <span class="string">'Hello world'</span> },
+  processText
+);
+
+<span class="function">console.log</span>(result.output);    <span class="comment">// AI response</span>
+<span class="function">console.log</span>(result.cached);    <span class="comment">// false (first run)</span>
+
+<span class="comment">// Second call with same input uses cache</span>
+<span class="keyword">const</span> result2 = <span class="keyword">await</span> synch.<span class="function">run</span>(
+  { input: <span class="string">'Hello world'</span> },
+  processText
+);
+
+<span class="function">console.log</span>(result2.cached);   <span class="comment">// true (from cache!)</span>
+            </div>
+
+            <h2>Benefits</h2>
+            <ul class="benefits">
+                <li>Reduces repeated computation for identical inputs</li>
+                <li>Improves response time through intelligent caching</li>
+                <li>Minimizes resource usage (CPU, memory, cost)</li>
+                <li>Provides structured execution pipeline</li>
+                <li>Easy integration into existing Node.js applications</li>
+                <li>Built specifically for AI workloads</li>
+            </ul>
+
+            <h2>Use Cases</h2>
+            <div class="features">
+                <div class="feature">
+                    <h3>AI Inference Pipelines</h3>
+                    <p>Optimize LLM and model inference by caching repeated prompts and inputs.</p>
+                </div>
+                <div class="feature">
+                    <h3>Batch Processing</h3>
+                    <p>Process large datasets efficiently by reusing computation for duplicate entries.</p>
+                </div>
+                <div class="feature">
+                    <h3>Stateful Workflows</h3>
+                    <p>Build conversational AI and multi-step workflows with persistent state.</p>
+                </div>
+                <div class="feature">
+                    <h3>Cost Optimization</h3>
+                    <p>Reduce API calls and compute costs by avoiding redundant AI executions.</p>
+                </div>
+            </div>
+
+            <h2>What Synch Is Not</h2>
+            <ul class="benefits" style="list-style-type: disc; padding-left: 30px;">
+                <li style="padding-left: 0;">Not a machine learning model</li>
+                <li style="padding-left: 0;">Not a chatbot framework</li>
+                <li style="padding-left: 0;">Not a cloud service</li>
+                <li style="padding-left: 0;">Not just a cache</li>
+            </ul>
+            <p style="margin-top: 20px;"><strong>Synch is an execution layer</strong> that sits between your application and AI processing logic.</p>
+
+            <h2>Architecture</h2>
+            <p>Synch is built with a clean, modular architecture:</p>
+            <div class="features">
+                <div class="feature">
+                    <h3>Runtime</h3>
+                    <p>Executes tasks with optimized resource management and concurrency control.</p>
+                </div>
+                <div class="feature">
+                    <h3>Cache</h3>
+                    <p>Stores and retrieves computed results with TTL and size-based eviction.</p>
+                </div>
+                <div class="feature">
+                    <h3>Router</h3>
+                    <p>Handles request routing, normalization, and ID generation.</p>
+                </div>
+                <div class="feature">
+                    <h3>Memory</h3>
+                    <p>Manages execution state and metadata across requests.</p>
+                </div>
+            </div>
+
+            <h2>Get Involved</h2>
+            <p>Synch is open source and we welcome contributions!</p>
+            <div class="cta-buttons" style="margin-top: 30px;">
+                <a href="https://github.com/yourusername/synch" class="btn btn-primary">GitHub Repository</a>
+                <a href="https://github.com/yourusername/synch/issues" class="btn btn-secondary">Report Issues</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Synch - MIT License</p>
+        <p>Built for the AI era • <a href="https://github.com/yourusername/synch">Contribute on GitHub</a></p>
+    </footer>
+</body>
+</html>
